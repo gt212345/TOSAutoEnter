@@ -1,18 +1,15 @@
 import java.awt.AWTException;
 import java.awt.Color;
-import java.awt.Event;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Robot;
-import java.awt.dnd.MouseDragGestureRecognizer;
 import java.awt.event.InputEvent;
-import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 class feeding {
-	Robot botf;
+	private Robot botf;
 	int a, n, loop;
 	boolean ifcon;
 	Point mouse;
@@ -46,6 +43,60 @@ class feeding {
 			Thread.sleep(3000);// 選戰友
 			mouse = MouseInfo.getPointerInfo().getLocation();
 			botf.mouseMove(159, 240);
+			botf.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseMove(mouse.x, mouse.y);
+			Thread.sleep(2000);
+			mouse = MouseInfo.getPointerInfo().getLocation();
+			botf.mouseMove(155, 397);// 確認戰友
+			botf.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseMove(mouse.x, mouse.y);
+			Thread.sleep(2000);
+			mouse = MouseInfo.getPointerInfo().getLocation();
+			botf.mouseMove(319, 586);// 進關
+			botf.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseMove(mouse.x, mouse.y);
+			while (true) {
+				boolean ifcon = ifContinue(c);
+				if (ifcon == true) {
+					break;
+				}
+			}
+		}
+		System.out.println("體力耗盡");
+	}
+
+	void souls(int n) throws AWTException, InterruptedException {
+		a = 20;
+		loop = (int) n / a;
+		if (loop > (int) n / a)
+			loop--;
+		for (; loop >= 0; loop--) {
+			botf = new Robot();
+			int c = 15;
+			System.out.println("剩餘" + loop + "次");
+			mouse = MouseInfo.getPointerInfo().getLocation();
+			botf.mouseMove(63, 221);// 旅人記憶
+			botf.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseMove(mouse.x, mouse.y);
+			Thread.sleep(2000);// 光一封
+			mouse = MouseInfo.getPointerInfo().getLocation();
+			botf.mouseMove(63, 221);
+			botf.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseMove(mouse.x, mouse.y);
+			Thread.sleep(2000);
+			mouse = MouseInfo.getPointerInfo().getLocation();
+			botf.mouseMove(63, 221);// 光1-3
+			botf.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseMove(mouse.x, mouse.y);
+			Thread.sleep(3000);// 選戰友
+			mouse = MouseInfo.getPointerInfo().getLocation();
+			botf.mouseMove(63, 221);
 			botf.mousePress(InputEvent.BUTTON1_DOWN_MASK);
 			botf.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
 			botf.mouseMove(mouse.x, mouse.y);
@@ -179,6 +230,60 @@ class feeding {
 		System.out.println("體力耗盡");
 	}
 
+	void darkskilling(int n) throws AWTException, InterruptedException {
+		a = 5;
+		loop = (int) n / a;
+		if (loop > (int) n / a)
+			loop--;
+		for (; loop >= 0; loop--) {
+			botf = new Robot();
+			int c = 15;
+			System.out.println("剩餘" + loop + "次");
+			mouse = MouseInfo.getPointerInfo().getLocation();
+			botf.mouseMove(328, 424);// 暗塔
+			botf.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseMove(mouse.x, mouse.y);
+			Thread.sleep(2000);// 暗二封
+			mouse = MouseInfo.getPointerInfo().getLocation();
+			botf.mouseMove(115, 402);
+			botf.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseMove(mouse.x, mouse.y);
+			Thread.sleep(2000);
+			mouse = MouseInfo.getPointerInfo().getLocation();
+			botf.mouseMove(153, 246);// 暗1-3
+			botf.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseMove(mouse.x, mouse.y);
+			Thread.sleep(3000);// 選戰友
+			mouse = MouseInfo.getPointerInfo().getLocation();
+			botf.mouseMove(135, 237);
+			botf.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseMove(mouse.x, mouse.y);
+			Thread.sleep(2000);
+			mouse = MouseInfo.getPointerInfo().getLocation();
+			botf.mouseMove(155, 397);// 確認戰友
+			botf.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseMove(mouse.x, mouse.y);
+			Thread.sleep(2000);
+			mouse = MouseInfo.getPointerInfo().getLocation();
+			botf.mouseMove(319, 586);// 進關
+			botf.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseMove(mouse.x, mouse.y);// 移開滑鼠避免影響轉珠
+			while (true) {
+				boolean ifcon = ifContinue(c);
+				if (ifcon == true) {
+					break;
+				}
+			}
+		}
+		System.out.println("體力耗盡");
+	}
+
 	void darkPaladin(int n) throws InterruptedException, AWTException {
 		int a = 5;
 		int loop = (int) n / a;
@@ -222,6 +327,11 @@ class feeding {
 		System.out.println("體力耗盡");
 	}
 
+	boolean ifSkillLevelUp() {
+		return false;
+
+	}
+
 	boolean ifContinue(int c) throws InterruptedException, AWTException {
 		if (c == 0) {
 			botf = new Robot();
@@ -232,6 +342,7 @@ class feeding {
 		Color color2 = botf.getPixelColor(152, 413);
 		Color color3 = botf.getPixelColor(152, 423);
 		Color color4 = botf.getPixelColor(152, 433);
+		Color color5 = botf.getPixelColor(152, 443);
 		if (color1.getRed() <= 20 && color1.getRed() >= 4
 				&& color1.getBlue() <= 120 && color1.getBlue() >= 101
 				&& color1.getGreen() <= 90 && color1.getGreen() >= 74) {
@@ -344,15 +455,40 @@ class feeding {
 			botf.mouseMove(mouse.x, mouse.y);
 			Thread.sleep(4000);
 			return true;
+		} else if (color5.getRed() <= 20 && color5.getRed() >= 4
+				&& color5.getBlue() <= 120 && color5.getBlue() >= 101
+				&& color5.getGreen() <= 90 && color5.getGreen() >= 74) {
+			mouse = MouseInfo.getPointerInfo().getLocation();
+			botf.mouseMove(152, 443);
+			botf.mousePress(InputEvent.BUTTON1_DOWN_MASK);// 繼續
+			botf.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseMove(mouse.x, mouse.y);
+			Thread.sleep(6000);
+			mouse = MouseInfo.getPointerInfo().getLocation();
+			botf.mouseMove(152, 443);
+			botf.mousePress(InputEvent.BUTTON1_DOWN_MASK);// 結算
+			botf.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseMove(mouse.x, mouse.y);
+			Thread.sleep(6000);
+			mouse = MouseInfo.getPointerInfo().getLocation();
+			botf.mouseMove(152, 443);
+			botf.mousePress(InputEvent.BUTTON1_DOWN_MASK);// 掉落
+			botf.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseMove(mouse.x, mouse.y);
+			Thread.sleep(4500);
+			mouse = MouseInfo.getPointerInfo().getLocation();
+			botf.mouseMove(228, 432);
+			botf.mousePress(InputEvent.BUTTON1_DOWN_MASK);// 取消
+			botf.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			botf.mouseMove(mouse.x, mouse.y);
+			Thread.sleep(4000);
+			return true;
 		} else {
 			Thread.sleep(20000);
 			return false;
 		}
 	}
 
-	class skillLeveling {
-
-	}
 }
 
 public class TOSAutoEnter {
@@ -368,28 +504,32 @@ public class TOSAutoEnter {
 		System.out.println("請將BS置於畫面左上方");
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		feeding fd = new feeding();
-		System.out.println("封塔選擇:水火木光暗+1234567:");
+		System.out.println("封塔選擇:水火木光暗+1234567-12345，緊急任務(貪婪之日)，布蘭克洞窟+屬性+靈魂石:");
 		br = new BufferedReader(new InputStreamReader(System.in));
 		String str = br.readLine();
 		System.out.println("請輸入目前體力");
 		br = new BufferedReader(new InputStreamReader(System.in));
 		i = Integer.valueOf(br.readLine().toString());
+		System.out.println("程式執行期間請勿將游標置於BS上方");
+
 		switch (str) {
-		case "光1":
-			System.out.println("程式執行期間請勿將游標置於BS上方");
+		case "光1-3":
 			fd.lightSlime(i);
 			break;
-		case "暗2":
-			System.out.println("程式執行期間請勿將游標置於BS上方");
+		case "暗2-1":
 			fd.darkPaladin(i);
 			break;
-		case "暗1":
-			System.out.println("程式執行期間請勿將游標置於BS上方");
+		case "暗1-3":
 			fd.darkSlime(i);
 			break;
-		case "火1":
-			System.out.println("程式執行期間請勿將游標置於BS上方");
+		case "火1-3":
 			fd.fireSlime(i);
+			break;
+		case "緊急任務":
+			fd.souls(i);
+			break;
+		case "暗2-5":
+			fd.darkskilling(i);
 			break;
 		}
 
